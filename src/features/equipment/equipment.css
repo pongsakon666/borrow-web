@@ -1,0 +1,863 @@
+/* ══ Wizard เพิ่มครุภัณฑ์ (Add Product) ═══════════════════════════ */
+.eq-wizard {
+  /* เต็มความสูงพื้นที่เนื้อหา เพื่อดันแถบ footer ลงไปชิดขอบล่าง */
+  min-height: calc(100vh - 71px - 64px);
+}
+
+.eq-wizard__body {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+/* ── การ์ดขั้นตอนการทำงาน ── */
+.eq-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.eq-steps__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.eq-steps__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eq-steps__item {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
+  font-family: var(--font-thai);
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 500;
+  color: var(--slate);
+  text-align: left;
+  cursor: default;
+}
+
+.eq-steps__item.is-done {
+  cursor: pointer;
+}
+
+.eq-steps__item.is-done:hover {
+  color: var(--blue);
+}
+
+.eq-steps__item.is-active {
+  border-bottom-color: var(--blue);
+  font-weight: 600;
+  color: var(--blue);
+}
+
+/* ── การ์ดฟอร์มขวา ── */
+.eq-panel {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.eq-panel--media {
+  padding: 28px;
+  border-radius: 12px;
+}
+
+.eq-step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.eq-step[hidden] {
+  display: none;
+}
+
+.eq-panel__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.eq-panel__title--thai {
+  font-family: var(--font-thai);
+  line-height: 30px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* label ของฟอร์ม: Inter 14/600 ห่างช่องกรอก 8 */
+.eq-form .ant-form-item {
+  margin-bottom: 0;
+}
+
+.eq-form .ant-form-item-label {
+  padding-bottom: 8px;
+  line-height: 17px;
+}
+
+.eq-form .ant-form-item-label > label {
+  height: 17px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.eq-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.eq-form__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* ช่องกรอกตามดีไซน์: ขอบ #e2e8f0 มุม 8 ตัวอักษร 16 placeholder #8897ad */
+.eq-form .eq-input.ant-input,
+.eq-form .eq-input.ant-input-affix-wrapper,
+.eq-form .eq-number.ant-input-number,
+.eq-form .eq-number.ant-picker {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+.eq-form .eq-number.ant-input-number .ant-input-number-input {
+  height: 38px;
+  padding: 0;
+}
+
+.eq-form .eq-input.eq-input--44 {
+  height: 44px;
+}
+
+.eq-form .eq-input.eq-input--48 {
+  height: 48px;
+}
+
+.eq-form .eq-input.ant-input-affix-wrapper .ant-input {
+  font-size: 16px;
+}
+
+.eq-form .eq-input.ant-input-affix-wrapper .ant-input-prefix {
+  margin-inline-end: 8px;
+}
+
+.eq-form .eq-input::placeholder,
+.eq-form .eq-input input::placeholder,
+.eq-form .eq-number input::placeholder,
+.eq-form .eq-qty__input input::placeholder,
+.eq-form .eq-editor__body::placeholder {
+  color: #8897ad;
+}
+
+.eq-field-icon {
+  font-size: 20px;
+  color: #a0aec0;
+}
+
+.eq-chevron {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* select หมวดหมู่ / หมวดหมู่ย่อย — สูง 44 มีไอคอนป้ายหน้า (antd v6 คุมขนาดผ่าน css var) */
+.eq-form .eq-select.ant-select {
+  --ant-select-font-size: 16px;
+  --ant-select-padding-horizontal: 15px;
+  width: 100%;
+}
+
+.eq-form .eq-select.eq-select--40.ant-select {
+  --ant-select-height: 40px;
+}
+
+.eq-form .eq-select .ant-select-prefix {
+  display: inline-flex;
+  margin-inline-end: 8px;
+}
+
+.eq-form .eq-select .ant-select-placeholder {
+  color: #8897ad;
+}
+
+/* จำนวน: ไอคอน + ช่องพิมพ์ + กล่อง −/+ ในกรอบเดียว */
+.eq-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 14px 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.eq-qty:focus-within {
+  border-color: var(--primary);
+}
+
+.ant-form-item-has-error .eq-qty {
+  border-color: #ff4d4f;
+}
+
+.eq-form .eq-qty__input.ant-input-number {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+}
+
+.eq-form .eq-qty__input .ant-input-number-input {
+  padding: 0;
+}
+
+.eq-qty__stepper {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 2px;
+  border-radius: 8px;
+  background: #f6f8fc;
+}
+
+.eq-qty__stepper button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: transparent;
+  color: #3d42df;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.eq-qty__stepper button:hover {
+  background: var(--surface);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.eq-qty__value {
+  min-width: 33px;
+  padding: 0 4px;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+}
+
+/* ช่องรายละเอียด — หน้าตาแบบ rich text */
+.eq-form__desc .ant-form-item-label {
+  padding-bottom: 8px;
+}
+
+.eq-editor {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.eq-editor:focus-within {
+  border-color: var(--primary);
+}
+
+.eq-editor__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  background: #fafbfd;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.eq-editor__style {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.eq-editor__style .anticon {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.eq-editor__sep {
+  width: 1px;
+  height: 16px;
+  background: var(--line);
+}
+
+.eq-form .eq-editor__body.ant-input {
+  display: block;
+  height: 200px;
+  padding: 16px;
+  border-radius: 0;
+  font-size: 16px;
+  line-height: 24px;
+  resize: none;
+}
+
+.eq-editor__count {
+  margin: 0;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ── ขั้น 2: อัปโหลด ── */
+.eq-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eq-upload__label {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.eq-dropzone.ant-upload-wrapper .ant-upload-drag {
+  border: 1px dashed #1849d6;
+  border-radius: 0;
+  background: var(--surface);
+}
+
+.eq-dropzone.ant-upload-wrapper .ant-upload-drag:not(.ant-upload-disabled):hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.eq-dropzone.ant-upload-wrapper .ant-upload-drag .ant-upload-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+.eq-dropzone__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0f172a;
+}
+
+.eq-dropzone__or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 200px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #6d6d6d;
+}
+
+.eq-dropzone__or::before,
+.eq-dropzone__or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.eq-dropzone__browse {
+  padding: 6px 12px;
+  border: 1px solid #1849d6;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #1849d6;
+}
+
+.eq-upload__hint {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6d6d6d;
+}
+
+.eq-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.eq-divider::before,
+.eq-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.eq-files {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eq-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.eq-file__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.eq-file__meta strong {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eq-file__meta small {
+  font-size: 12px;
+  line-height: 16px;
+  color: #6d6d6d;
+}
+
+.eq-file__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.eq-file__btn {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.eq-file__btn.is-view {
+  color: #1470ff;
+}
+
+.eq-file__btn.is-remove {
+  color: #f04438;
+}
+
+.eq-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eq-form .eq-link .eq-input .ant-input {
+  font-size: 14px;
+}
+
+/* ── ขั้น 3: ตรวจสอบ ── */
+.eq-review {
+  gap: 28px;
+}
+
+.eq-review__group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eq-review__group.is-media {
+  gap: 16px;
+  min-height: 128px;
+}
+
+.eq-review__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 28px;
+}
+
+.eq-chip {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #f1f5f9;
+  font: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.eq-chip:hover {
+  background: #e2e8f0;
+}
+
+.eq-review__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.eq-review__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.eq-review__item.is-full {
+  grid-column: 1 / -1;
+}
+
+.eq-review__item dt {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--slate);
+}
+
+.eq-review__item dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  overflow-wrap: anywhere;
+}
+
+.eq-review__empty {
+  color: #e9edf3;
+}
+
+.eq-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+}
+
+.eq-tag .anticon {
+  font-size: 14px;
+}
+
+.eq-tag.is-green {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.eq-tag.is-purple {
+  background: #faf5ff;
+  color: #701a75;
+}
+
+.eq-review__item dd.eq-review__desc {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #334155;
+  white-space: pre-line;
+}
+
+.eq-review__rule {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.eq-review__none {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.eq-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 340px));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.eq-thumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #fafbfd;
+  min-width: 0;
+}
+
+.eq-thumb__img {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #e2e8f0;
+}
+
+.eq-thumb__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.eq-thumb__meta strong {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  color: #1e293b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.eq-thumb__meta small {
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--slate);
+}
+
+.eq-thumb__icon {
+  font-size: 22px;
+  color: var(--ink);
+}
+
+/* ── แถบ footer ติดล่าง — ยืดเต็มความกว้างพื้นที่เนื้อหา (หักล้าง padding 32 ของ app-content) ── */
+.eq-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  min-height: 91px;
+  margin: auto -32px -32px;
+  padding: 16px 40px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.eq-footer__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eq-footer__label {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.eq-footer__pct {
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: #eef2f6;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.eq-footer__bar.ant-progress {
+  margin: 0;
+  line-height: 0;
+}
+
+.eq-footer__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.eq-footer__draft {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  color: var(--slate);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.eq-footer__draft:hover {
+  color: var(--primary);
+}
+
+.eq-footer__draft:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.eq-btn.ant-btn {
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.eq-btn--outline.ant-btn {
+  height: 37px;
+  padding: 0 20px;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+.eq-btn--primary.ant-btn {
+  min-width: 120px;
+  height: 44px;
+  padding: 0 24px;
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.eq-btn--primary.ant-btn:not(:disabled):hover {
+  border-color: #4338ca !important;
+  background: #4338ca !important;
+  color: #fff !important;
+}
+
+@media (max-width: 1200px) {
+  .eq-wizard__body {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .eq-panel {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .eq-wizard__body {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  /* ขั้นตอนเรียงแนวนอนเหนือฟอร์ม */
+  .eq-steps__list {
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+  }
+
+  .eq-steps__item {
+    white-space: nowrap;
+  }
+
+  .eq-form__grid,
+  .eq-review__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eq-footer {
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .eq-wizard {
+    min-height: calc(100vh - 71px - 32px);
+  }
+
+  .eq-footer {
+    margin: auto -16px -16px;
+    padding: 12px 16px;
+  }
+
+  .eq-footer__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

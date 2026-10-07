@@ -1,0 +1,80 @@
+/* ══ Notifications — ไม่มีเฟรมในดีไซน์ ใช้โทนเดียวกับหน้าอื่น ══════ */
+.nt-read-all.ant-btn {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 99px;
+}
+
+.nt-view.ant-segmented {
+  font-size: 13px;
+}
+
+.nt-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nt-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.nt-item:last-child {
+  border-bottom: 0;
+}
+
+.nt-item.is-unread {
+  background: #f8f9ff;
+}
+
+.nt-item__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.nt-item__text p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.nt-item.is-unread .nt-item__text p {
+  font-weight: 600;
+}
+
+.nt-item__text small {
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--slate);
+}
+
+.nt-item__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--pink);
+}
+
+.nt-empty {
+  padding: 32px 0;
+}
+
+@media (max-width: 640px) {
+  .nt-page .section-card__head {
+    flex-wrap: wrap;
+  }
+}

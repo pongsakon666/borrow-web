@@ -1,0 +1,223 @@
+/* ══ Settings (Profile Settings) — Figma 162-13220 ══════════════ */
+.st-card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+
+.st-head h1 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.st-head p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: #6b7280;
+}
+
+.st-line {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* ── รูปโปรไฟล์ ── */
+.st-avatar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.st-avatar__pic {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.st-avatar__badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 14px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.st-avatar__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.st-avatar__text strong {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.st-avatar__text span {
+  font-size: 13px;
+  line-height: 16px;
+  color: #6b7280;
+}
+
+/* ── ช่องกรอก 2 คอลัมน์ ── */
+.st-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.st-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.st-field > span {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.st-field .ant-input,
+.st-readonly {
+  height: 42px;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #111827;
+}
+
+.st-readonly {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Preferences ── */
+.st-prefs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.st-prefs h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.st-prefs ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.st-prefs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.st-prefs li > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 560px;
+}
+
+.st-prefs li strong {
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.st-prefs li span {
+  font-size: 13px;
+  line-height: 16px;
+  color: #6b7280;
+}
+
+/* switch 36x20 ตามดีไซน์ */
+.st-switch.ant-switch {
+  flex-shrink: 0;
+  min-width: 36px;
+  height: 20px;
+}
+
+.st-switch.ant-switch .ant-switch-handle {
+  top: 3px;
+  width: 14px;
+  height: 14px;
+}
+
+.st-switch.ant-switch.ant-switch-checked .ant-switch-handle {
+  inset-inline-start: calc(100% - 17px);
+}
+
+.st-switch.ant-switch:not(.ant-switch-checked) {
+  background: #d2d5da;
+}
+
+.st-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.st-save.ant-btn {
+  width: 248px;
+  height: 45px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .st-card {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .st-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .st-save.ant-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,1604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.12.10 on win32)" generated="2026-09-29T13:56:25.074119" rpa="false" schemaversion="5">
+<suite id="s1" name="Auth" source="D:\rent-borrow-web\tests\robot\suites\auth">
+<suite id="s1-s1" name="Login" source="D:\rent-borrow-web\tests\robot\suites\auth\login.robot">
+<kw name="Open App" owner="common" type="SETUP">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-09-29T13:56:25.856079" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "D:\\rent-borrow-web\\tests\\robot\\results-auth\\browser\\traces\\temp\\203a8b78-d6c1-4f08-934e-ce409606d443"}</msg>
+<msg time="2026-09-29T13:56:25.892587" level="INFO">Starting Browser process D:\rent-borrow-web\tests\robot\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:55382</msg>
+<msg time="2026-09-29T13:56:27.200302" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"D:\\rent-borrow-web\\tests\\robot\\results-auth\\browser\\traces\\temp\\203a8b78-d6c1-4f08-934e-ce409606d443"}</msg>
+<arg>chromium</arg>
+<arg>headless=${HEADLESS}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-09-29T13:56:25.855058" elapsed="1.345244"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2026-09-29T13:56:27.204535" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "locale": "th-TH",
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  }
+}</msg>
+<msg time="2026-09-29T13:56:27.252389" level="INFO">Successfully created context. </msg>
+<msg time="2026-09-29T13:56:27.252389" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'locale': 'th-TH', 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1440, 'height': 900}}</msg>
+<arg>viewport={'width': 1440, 'height': 900}</arg>
+<arg>locale=th-TH</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2026-09-29T13:56:27.201867" elapsed="0.050522"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-09-29T13:56:28.076789" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173/login</msg>
+<arg>${BASE_URL}${path}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-09-29T13:56:27.253837" elapsed="0.822952"/>
+</kw>
+<arg>/login</arg>
+<doc>เปิด browser ใหม่ไปที่ path ที่ระบุ</doc>
+<status status="PASS" start="2026-09-29T13:56:25.854043" elapsed="2.222746"/>
+</kw>
+<test id="s1-s1-t1" name="Login Page Is Rendered" line="18">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:28.413043" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:28.283013" elapsed="0.130030"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:28.652136" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:28.413043" elapsed="0.239093"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:28.659129" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:28.652136" elapsed="0.006993"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:28.281416" elapsed="0.377713"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:28.858464" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:28.660404" elapsed="0.198060"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:29.133592" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:28.858464" elapsed="0.275128"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.358782" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.133592" elapsed="0.225190"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:28.659129" elapsed="0.699653"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:28.279861" elapsed="1.078921"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:29.445119" level="INFO">Text: ['เข้าสู่ระบบ']</msg>
+<arg>${LOGIN_TITLE}</arg>
+<arg>==</arg>
+<arg>เข้าสู่ระบบ</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.359781" elapsed="0.085338"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:29.460971" level="INFO">Text: ['เข้าสู่ระบบ\nระบบยืม-คืนครุภัณฑ์']</msg>
+<arg>css=.auth-card__header</arg>
+<arg>contains</arg>
+<arg>ระบบยืม-คืนครุภัณฑ์</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.446137" elapsed="0.014834"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.472278" level="INFO">Waited for Element with selector css=[data-testid="login-email"] at state visible</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.461998" elapsed="0.010280"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.479467" level="INFO">Waited for Element with selector css=[data-testid="login-password"] at state visible</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.472278" elapsed="0.008181"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.532496" level="INFO">Waited for Element with selector css=[data-testid="login-google"] at state visible</msg>
+<arg>${LOGIN_GOOGLE}</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.524483" elapsed="0.008013"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.540523" level="INFO">Waited for Element with selector css=[data-testid="login-forgot"] at state visible</msg>
+<arg>${LOGIN_FORGOT}</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.533495" elapsed="0.007028"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:29.550211" level="INFO">Waited for Element with selector css=[data-testid="login-register"] at state visible</msg>
+<arg>${LOGIN_REGISTER}</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.541523" elapsed="0.010138"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:29.571923" level="INFO">Text: ['Riverpark']</msg>
+<arg>css=.auth-card__foot</arg>
+<arg>==</arg>
+<arg>Riverpark</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.551661" elapsed="0.020262"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:29.925244" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/01-login-page.png" target="_blank"&gt;&lt;img src="browser/screenshot/01-login-page.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.572917" elapsed="0.352327"/>
+</kw>
+<arg>01-login-page</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:29.572917" elapsed="0.352327"/>
+</kw>
+<doc>หน้า login แสดงครบตามดีไซน์</doc>
+<tag>auth</tag>
+<tag>smoke</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:28.076789" elapsed="1.848455"/>
+</test>
+<test id="s1-s1-t2" name="Login Succeeds With Valid Credentials" line="31">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:30.052624" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:29.944465" elapsed="0.108159"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:30.157034" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.052624" elapsed="0.104410"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:30.161938" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.158060" elapsed="0.003878"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:29.944465" elapsed="0.217473"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:30.304358" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.162936" elapsed="0.141422"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:30.490095" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.304358" elapsed="0.186739"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:30.654099" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.491097" elapsed="0.166007"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:30.161938" elapsed="0.495166"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:29.944465" elapsed="0.712639"/>
+</kw>
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:30.659098" level="INFO">Fills the text 'admin@example.com' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.659098" elapsed="0.056081"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:30.716369" level="INFO">Fills the text 'Passw0rd!' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.715179" elapsed="0.040977"/>
+</kw>
+<arg>${USER}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2026-09-29T13:56:30.658100" elapsed="0.098056"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:31.064059" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/02-login-filled.png" target="_blank"&gt;&lt;img src="browser/screenshot/02-login-filled.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:30.757188" elapsed="0.306871"/>
+</kw>
+<arg>02-login-filled</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:30.756156" elapsed="0.307903"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:31.066078" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.065078" elapsed="0.147079"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:31.065078" elapsed="0.148097"/>
+</kw>
+<kw name="Dashboard Should Be Loaded" owner="dashboard_page">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:31.617891" level="INFO">Waited for Element with selector css=[data-testid="dashboard-page"] at state visible</msg>
+<arg>${DASHBOARD}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.214166" elapsed="0.403725"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:31.927432" level="INFO">Waited for Element with selector css=[data-testid="stat-total-value"] at state visible</msg>
+<arg>${STAT_TOTAL}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.617891" elapsed="0.309541"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Stat Should Have Number" owner="dashboard_page">
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:31.953303" level="INFO">Text: ['6,653']</msg>
+<msg time="2026-09-29T13:56:31.953303" level="INFO">${text} = 6,653</msg>
+<var>${text}</var>
+<arg>${locator}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.928439" elapsed="0.024864"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-09-29T13:56:31.954342" level="INFO">Length is 5.</msg>
+<arg>${text}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.954342" elapsed="0.000000"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2026-09-29T13:56:31.955459" level="INFO">${clean} = 6653</msg>
+<var>${clean}</var>
+<arg>${text}</arg>
+<arg>,</arg>
+<arg>${EMPTY}</arg>
+<doc>Replaces `search_for` in the given `string` with `replace_with`.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.955459" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-09-29T13:56:31.955459" level="INFO">${number} = 6653</msg>
+<var>${number}</var>
+<arg>${clean}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.955459" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${number} &gt;= 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.955459" elapsed="0.001057"/>
+</kw>
+<arg>${STAT_TOTAL}</arg>
+<doc>ตัวเลขบนการ์ดมี comma คั่นหลักพัน — ตัดออกก่อนแปลงเป็น int
+ถ้ายังเป็น skeleton จะแปลงไม่ผ่านแล้ว retry ต่อ</doc>
+<status status="PASS" start="2026-09-29T13:56:31.928439" elapsed="0.028077"/>
+</kw>
+<arg>10x</arg>
+<arg>1s</arg>
+<arg>Stat Should Have Number</arg>
+<arg>${STAT_TOTAL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.927432" elapsed="0.029084"/>
+</kw>
+<doc>รอจนการ์ดสรุปมีตัวเลขจริง (ไม่ใช่ skeleton)</doc>
+<status status="PASS" start="2026-09-29T13:56:31.214166" elapsed="0.742350"/>
+</kw>
+<kw name="Shell Should Be Ready" owner="shell">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:31.969988" level="INFO">Waited for Element with selector css=[data-testid="app-sidebar"] at state visible</msg>
+<arg>${SIDEBAR}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.957509" elapsed="0.012479"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:31.985257" level="INFO">Waited for Element with selector css=[data-testid="header-user"] at state visible</msg>
+<arg>${HEADER_USER}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.969988" elapsed="0.015269"/>
+</kw>
+<doc>โครงหน้าหลังล็อกอินโหลดครบ</doc>
+<status status="PASS" start="2026-09-29T13:56:31.956516" elapsed="0.028741"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:32.024430" level="INFO">Text: ['ผู้ดูแลระบบ']</msg>
+<arg>${HEADER_USER}</arg>
+<arg>==</arg>
+<arg>${USER_NAME}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:31.986795" elapsed="0.037635"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:32.041429" level="INFO">Text: ['ผู้ดูแลระบบ']</msg>
+<arg>${SIDEBAR_USER}</arg>
+<arg>==</arg>
+<arg>${USER_NAME}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.025428" elapsed="0.016001"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<arg>==</arg>
+<arg>${BASE_URL}/</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.041429" elapsed="0.003037"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:32.205592" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/03-dashboard-after-login.png" target="_blank"&gt;&lt;img src="browser/screenshot/03-dashboard-after-login.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.044466" elapsed="0.161126"/>
+</kw>
+<arg>03-dashboard-after-login</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:32.044466" elapsed="0.161126"/>
+</kw>
+<doc>ล็อกอินสำเร็จ → เข้าหน้า Dashboard และแสดงชื่อผู้ใช้</doc>
+<tag>auth</tag>
+<tag>smoke</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:29.933745" elapsed="2.271847"/>
+</test>
+<test id="s1-s1-t3" name="Login Fails With Wrong Password" line="44">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:32.359152" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.238271" elapsed="0.120881"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:32.380153" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.359152" elapsed="0.021001"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:32.384191" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.381189" elapsed="0.004233"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:32.238271" elapsed="0.147151"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:32.518435" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.385422" elapsed="0.133013"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:32.748258" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.519432" elapsed="0.228826"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:32.908143" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.748258" elapsed="0.159885"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:32.385422" elapsed="0.522721"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:32.237269" elapsed="0.670874"/>
+</kw>
+<kw name="Login With" owner="login_page">
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:32.911171" level="INFO">Fills the text 'admin@example.com' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.910663" elapsed="0.070961"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:32.982624" level="INFO">Fills the text 'WrongPassword123' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:32.981624" elapsed="0.022881"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-09-29T13:56:32.909651" elapsed="0.094854"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:33.005527" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.004505" elapsed="0.082122"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:33.004505" elapsed="0.083665"/>
+</kw>
+<arg>${USER}</arg>
+<arg>WrongPassword123</arg>
+<doc>กรอกฟอร์ม + กดเข้าสู่ระบบ (ไม่ตรวจผลลัพธ์)</doc>
+<status status="PASS" start="2026-09-29T13:56:32.909651" elapsed="0.178519"/>
+</kw>
+<kw name="Login Error Should Be Shown" owner="login_page">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:33.233892" level="INFO">Waited for Element with selector css=[data-testid="login-error"] at state visible</msg>
+<arg>${LOGIN_ERROR}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.089224" elapsed="0.144668"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:33.264295" level="INFO">Text: ['อีเมลหรือรหัสผ่านไม่ถูกต้อง']</msg>
+<arg>${LOGIN_ERROR}</arg>
+<arg>contains</arg>
+<arg>${expected}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.233892" elapsed="0.030403"/>
+</kw>
+<arg>อีเมลหรือรหัสผ่านไม่ถูกต้อง</arg>
+<status status="PASS" start="2026-09-29T13:56:33.088170" elapsed="0.176125"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<arg>==</arg>
+<arg>${LOGIN_URL}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.264295" elapsed="0.003097"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:33.548048" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/04-login-wrong-password.png" target="_blank"&gt;&lt;img src="browser/screenshot/04-login-wrong-password.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.267392" elapsed="0.280656"/>
+</kw>
+<arg>04-login-wrong-password</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:33.267392" elapsed="0.280656"/>
+</kw>
+<doc>รหัสผ่านผิด → ขึ้น alert และยังอยู่หน้า login</doc>
+<tag>auth</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:32.221431" elapsed="1.326617"/>
+</test>
+<test id="s1-s1-t4" name="Login Fails With Unknown Email" line="51">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:33.634671" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.561271" elapsed="0.074403"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:33.730916" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.635674" elapsed="0.095242"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:33.735595" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.730916" elapsed="0.004679"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:33.561271" elapsed="0.174324"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:33.861214" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.735595" elapsed="0.125619"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:34.076590" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:33.861214" elapsed="0.215376"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:34.228750" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.077597" elapsed="0.152153"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:33.735595" elapsed="0.494155"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:33.560266" elapsed="0.669484"/>
+</kw>
+<kw name="Login With" owner="login_page">
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:34.230769" level="INFO">Fills the text 'nobody@example.com' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.230769" elapsed="0.023964"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:34.254733" level="INFO">Fills the text 'Passw0rd!' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.254733" elapsed="0.025693"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-09-29T13:56:34.229750" elapsed="0.052167"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:34.282915" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.281917" elapsed="0.092180"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:34.281917" elapsed="0.092180"/>
+</kw>
+<arg>nobody@example.com</arg>
+<arg>${PASSWORD}</arg>
+<doc>กรอกฟอร์ม + กดเข้าสู่ระบบ (ไม่ตรวจผลลัพธ์)</doc>
+<status status="PASS" start="2026-09-29T13:56:34.229750" elapsed="0.144347"/>
+</kw>
+<kw name="Login Error Should Be Shown" owner="login_page">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:34.402737" level="INFO">Waited for Element with selector css=[data-testid="login-error"] at state visible</msg>
+<arg>${LOGIN_ERROR}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.375098" elapsed="0.027639"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:34.429885" level="INFO">Text: ['อีเมลหรือรหัสผ่านไม่ถูกต้อง']</msg>
+<arg>${LOGIN_ERROR}</arg>
+<arg>contains</arg>
+<arg>${expected}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.402737" elapsed="0.027148"/>
+</kw>
+<arg>อีเมลหรือรหัสผ่านไม่ถูกต้อง</arg>
+<status status="PASS" start="2026-09-29T13:56:34.374097" elapsed="0.055788"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:34.660418" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/05-login-unknown-email.png" target="_blank"&gt;&lt;img src="browser/screenshot/05-login-unknown-email.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.430899" elapsed="0.229519"/>
+</kw>
+<arg>05-login-unknown-email</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:34.429885" elapsed="0.231532"/>
+</kw>
+<doc>อีเมลที่ไม่มีในระบบ → ข้อความเหมือนรหัสผ่านผิด (กัน user enumeration)</doc>
+<tag>auth</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:33.554045" elapsed="1.107372"/>
+</test>
+<test id="s1-s1-t5" name="Empty Form Shows Field Validation" line="57">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:34.742032" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.672417" elapsed="0.069615"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:34.826839" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.743762" elapsed="0.083077"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:34.830850" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.826839" elapsed="0.004011"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:34.671417" elapsed="0.159433"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:34.965482" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.830850" elapsed="0.134632"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:35.185796" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:34.966482" elapsed="0.219314"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:35.340616" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.186794" elapsed="0.153822"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:34.830850" elapsed="0.509766"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:34.671417" elapsed="0.669199"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:35.341617" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.341617" elapsed="0.075371"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:35.340616" elapsed="0.076372"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:35.462661" level="INFO">Waited for Element with selector css=.ant-form-item-explain-error &gt;&gt; nth=0 at state visible</msg>
+<arg>${FIELD_ERROR} &gt;&gt; nth=0</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.416988" elapsed="0.045673"/>
+</kw>
+<kw name="Get Elements" owner="Browser">
+<msg time="2026-09-29T13:56:35.470516" level="INFO">Found 2 Locators successfully.</msg>
+<msg time="2026-09-29T13:56:35.470516" level="INFO">${errors} = ['css=.ant-form-item-explain-error &gt;&gt; nth=0', 'css=.ant-form-item-explain-error &gt;&gt; nth=1']</msg>
+<var>${errors}</var>
+<arg>${FIELD_ERROR}</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a list of selector strings, one for each element matched by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.462661" elapsed="0.007855"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2026-09-29T13:56:35.470516" level="INFO">Length is 2.</msg>
+<arg>${errors}</arg>
+<arg>2</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.470516" elapsed="0.001213"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:35.496541" level="INFO">Text: ['กรุณากรอกอีเมล']</msg>
+<arg>${FIELD_ERROR} &gt;&gt; nth=0</arg>
+<arg>==</arg>
+<arg>กรุณากรอกอีเมล</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.471729" elapsed="0.024812"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:35.507447" level="INFO">Text: ['กรุณากรอกรหัสผ่าน']</msg>
+<arg>${FIELD_ERROR} &gt;&gt; nth=1</arg>
+<arg>==</arg>
+<arg>กรุณากรอกรหัสผ่าน</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.497543" elapsed="0.009904"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<arg>==</arg>
+<arg>${LOGIN_URL}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.507447" elapsed="0.003592"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:35.766732" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/06-login-empty-validation.png" target="_blank"&gt;&lt;img src="browser/screenshot/06-login-empty-validation.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.512020" elapsed="0.254712"/>
+</kw>
+<arg>06-login-empty-validation</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:35.511039" elapsed="0.255693"/>
+</kw>
+<doc>กดเข้าสู่ระบบโดยไม่กรอก → ขึ้น error ใต้ช่องกรอก ไม่ยิง API</doc>
+<tag>auth</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:34.666418" elapsed="1.100314"/>
+</test>
+<test id="s1-s1-t6" name="Invalid Email Format Is Rejected" line="68">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:35.847667" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.778260" elapsed="0.069407"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:36.014627" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:35.847667" elapsed="0.166960"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:36.019347" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.014627" elapsed="0.004720"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:35.778260" elapsed="0.241087"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:36.094906" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.020344" elapsed="0.074562"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:36.322338" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.094906" elapsed="0.228432"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:36.476981" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.323338" elapsed="0.155179"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:36.019347" elapsed="0.459170"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:35.778260" elapsed="0.700257"/>
+</kw>
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:36.480139" level="INFO">Fills the text 'not-an-email' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.478517" elapsed="0.100692"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:36.580322" level="INFO">Fills the text 'Passw0rd!' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.579209" elapsed="0.102153"/>
+</kw>
+<arg>not-an-email</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2026-09-29T13:56:36.478517" elapsed="0.202845"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:36.682364" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.682364" elapsed="0.081906"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:36.681362" elapsed="0.082908"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:36.772868" level="INFO">Waited for Element with selector css=.ant-form-item-explain-error &gt;&gt; nth=0 at state visible</msg>
+<arg>${FIELD_ERROR} &gt;&gt; nth=0</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.764270" elapsed="0.008598"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:36.798774" level="INFO">Text: ['รูปแบบอีเมลไม่ถูกต้อง']</msg>
+<arg>${FIELD_ERROR} &gt;&gt; nth=0</arg>
+<arg>==</arg>
+<arg>รูปแบบอีเมลไม่ถูกต้อง</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.772868" elapsed="0.025906"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<arg>==</arg>
+<arg>${LOGIN_URL}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.798774" elapsed="0.004003"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:37.033382" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/07-login-invalid-email.png" target="_blank"&gt;&lt;img src="browser/screenshot/07-login-invalid-email.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:36.803773" elapsed="0.229609"/>
+</kw>
+<arg>07-login-invalid-email</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:36.802777" elapsed="0.230605"/>
+</kw>
+<doc>อีเมลผิดรูปแบบ → validate ฝั่ง FE ก่อนส่ง</doc>
+<tag>auth</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:35.773218" elapsed="1.260164"/>
+</test>
+<test id="s1-s1-t7" name="Logout Returns To Login Page" line="77">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:37.164163" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.059599" elapsed="0.104564"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:37.326259" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.165672" elapsed="0.160587"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:37.329406" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.326259" elapsed="0.004140"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:37.059599" elapsed="0.270800"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:37.395539" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.330399" elapsed="0.065140"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:37.552441" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.397142" elapsed="0.156310"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:37.695202" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.553452" elapsed="0.141750"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:37.330399" elapsed="0.364803"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:37.058442" elapsed="0.636760"/>
+</kw>
+<kw name="Login With" owner="login_page">
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:37.696262" level="INFO">Fills the text 'admin@example.com' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.696262" elapsed="0.021335"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:37.718648" level="INFO">Fills the text 'Passw0rd!' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.717597" elapsed="0.022903"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-09-29T13:56:37.696262" elapsed="0.044238"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:37.741500" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.741500" elapsed="0.075667"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:37.740500" elapsed="0.076667"/>
+</kw>
+<doc>กรอกฟอร์ม + กดเข้าสู่ระบบ (ไม่ตรวจผลลัพธ์)</doc>
+<status status="PASS" start="2026-09-29T13:56:37.695202" elapsed="0.121965"/>
+</kw>
+<kw name="Dashboard Should Be Loaded" owner="dashboard_page">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:38.058674" level="INFO">Waited for Element with selector css=[data-testid="dashboard-page"] at state visible</msg>
+<arg>${DASHBOARD}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:37.818354" elapsed="0.240320"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:38.281829" level="INFO">Waited for Element with selector css=[data-testid="stat-total-value"] at state visible</msg>
+<arg>${STAT_TOTAL}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.058674" elapsed="0.223155"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Stat Should Have Number" owner="dashboard_page">
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:38.322035" level="INFO">Text: ['6,653']</msg>
+<msg time="2026-09-29T13:56:38.323022" level="INFO">${text} = 6,653</msg>
+<var>${text}</var>
+<arg>${locator}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.282864" elapsed="0.040158"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-09-29T13:56:38.323022" level="INFO">Length is 5.</msg>
+<arg>${text}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.323022" elapsed="0.000000"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2026-09-29T13:56:38.324194" level="INFO">${clean} = 6653</msg>
+<var>${clean}</var>
+<arg>${text}</arg>
+<arg>,</arg>
+<arg>${EMPTY}</arg>
+<doc>Replaces `search_for` in the given `string` with `replace_with`.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.324194" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-09-29T13:56:38.325198" level="INFO">${number} = 6653</msg>
+<var>${number}</var>
+<arg>${clean}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.324194" elapsed="0.001004"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${number} &gt;= 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.325198" elapsed="0.000000"/>
+</kw>
+<arg>${STAT_TOTAL}</arg>
+<doc>ตัวเลขบนการ์ดมี comma คั่นหลักพัน — ตัดออกก่อนแปลงเป็น int
+ถ้ายังเป็น skeleton จะแปลงไม่ผ่านแล้ว retry ต่อ</doc>
+<status status="PASS" start="2026-09-29T13:56:38.282864" elapsed="0.042334"/>
+</kw>
+<arg>10x</arg>
+<arg>1s</arg>
+<arg>Stat Should Have Number</arg>
+<arg>${STAT_TOTAL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.281829" elapsed="0.044401"/>
+</kw>
+<doc>รอจนการ์ดสรุปมีตัวเลขจริง (ไม่ใช่ skeleton)</doc>
+<status status="PASS" start="2026-09-29T13:56:37.817167" elapsed="0.509063"/>
+</kw>
+<kw name="Logout" owner="shell">
+<kw name="Open User Menu" owner="shell">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:38.327261" level="INFO">Clicks the element 'css=[data-testid="header-user-menu"]'.</msg>
+<arg>${HEADER_USER_MENU}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.326230" elapsed="0.095533"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:38.490970" level="INFO">Waited for Element with selector css=[data-testid="logout-button"] at state visible</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<arg>visible</arg>
+<arg>timeout=10s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.422760" elapsed="0.068210"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:38.326230" elapsed="0.164740"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:38.491980" level="INFO">Clicks the element 'css=[data-testid="logout-button"]'.</msg>
+<arg>${LOGOUT_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.490970" elapsed="0.379587"/>
+</kw>
+<doc>ปุ่มออกจากระบบอยู่ใน dropdown ต้องเปิดเมนูก่อน</doc>
+<status status="PASS" start="2026-09-29T13:56:38.326230" elapsed="0.545296"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:38.913728" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.871526" elapsed="0.042202"/>
+</kw>
+<kw name="Get Url" owner="Browser">
+<arg>==</arg>
+<arg>${LOGIN_URL}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the current URL.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.914728" elapsed="0.002046"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:39.186227" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/08-after-logout.png" target="_blank"&gt;&lt;img src="browser/screenshot/08-after-logout.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:38.917780" elapsed="0.268447"/>
+</kw>
+<arg>08-after-logout</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:38.916774" elapsed="0.269453"/>
+</kw>
+<doc>ออกจากระบบผ่านเมนูผู้ใช้ → กลับหน้า login</doc>
+<tag>auth</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:37.047730" elapsed="2.139500"/>
+</test>
+<test id="s1-s1-t8" name="Login Page Works On Mobile Viewport" line="86">
+<kw name="Start From Clean Login Page" type="SETUP">
+<kw name="Clear Session" owner="common">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:39.283406" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${BASE_URL}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.201086" elapsed="0.082320"/>
+</kw>
+<kw name="SessionStorage Clear" owner="Browser">
+<msg time="2026-09-29T13:56:39.370352" level="INFO">JavaScript executed successfully.</msg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Remove all saved data from the session storage.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.284393" elapsed="0.085959"/>
+</kw>
+<kw name="Delete All Cookies" owner="Browser">
+<msg time="2026-09-29T13:56:39.375630" level="INFO">All cookies deleted.</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Deletes all cookies from the currently active browser context.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.371383" elapsed="0.004247"/>
+</kw>
+<doc>ล้าง session ของ test ก่อนหน้า — ไม่งั้น test ถัดไปจะยังล็อกอินค้างอยู่
+ต้องอยู่บน origin เดียวกันก่อนถึงจะเข้าถึง sessionStorage ได้</doc>
+<status status="PASS" start="2026-09-29T13:56:39.201086" elapsed="0.174544"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:39.503924" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.375630" elapsed="0.129300"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:39.766364" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.504930" elapsed="0.262427"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:39.939338" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.767357" elapsed="0.171981"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:39.375630" elapsed="0.563708"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:39.200087" elapsed="0.739251"/>
+</kw>
+<kw name="Set Viewport Size" owner="Browser">
+<msg time="2026-09-29T13:56:39.950567" level="INFO">Set viewport size to: {"width":390,"height":844}</msg>
+<arg>390</arg>
+<arg>844</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Sets the current page's viewport size to the specified dimensions.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.939338" elapsed="0.011229"/>
+</kw>
+<kw name="Open Login Page" owner="login_page">
+<kw name="Go To" owner="Browser">
+<msg time="2026-09-29T13:56:40.036889" level="INFO">Successfully opened URL http://localhost:5173/login</msg>
+<arg>${LOGIN_URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Navigates to the given ``url``.</doc>
+<status status="PASS" start="2026-09-29T13:56:39.951565" elapsed="0.085324"/>
+</kw>
+<kw name="Reload" owner="Browser">
+<msg time="2026-09-29T13:56:40.240084" level="INFO">Reloaded page with options: {"waitUntil": "load"}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Reloads current active page.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.037899" elapsed="0.202185"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:40.373759" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.241128" elapsed="0.132631"/>
+</kw>
+<doc>เปิดหน้า /login และรอจนฟอร์มพร้อมใช้งาน</doc>
+<status status="PASS" start="2026-09-29T13:56:39.950567" elapsed="0.423192"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:40.380137" level="INFO">Waited for Element with selector css=[data-testid="login-submit"] at state visible</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>visible</arg>
+<arg>timeout=15s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.373759" elapsed="0.006378"/>
+</kw>
+<kw name="Get Element States" owner="Browser">
+<msg time="2026-09-29T13:56:40.419037" level="INFO">States are: ['attached', 'hidden', 'enabled', 'defocused']</msg>
+<arg>css=.auth-visual</arg>
+<arg>contains</arg>
+<arg>hidden</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Get the active states from the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.380137" elapsed="0.038900"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:40.498598" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/09-login-mobile.png" target="_blank"&gt;&lt;img src="browser/screenshot/09-login-mobile.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.420035" elapsed="0.079564"/>
+</kw>
+<arg>09-login-mobile</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:40.420035" elapsed="0.079564"/>
+</kw>
+<kw name="Login With" owner="login_page">
+<kw name="Fill Login Form" owner="login_page">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:40.501610" level="INFO">Fills the text 'admin@example.com' in the given field.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.500603" elapsed="0.022271"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-09-29T13:56:40.523876" level="INFO">Fills the text 'Passw0rd!' in the given field.</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.522874" elapsed="0.024347"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2026-09-29T13:56:40.500603" elapsed="0.047649"/>
+</kw>
+<kw name="Submit Login Form" owner="login_page">
+<kw name="Click" owner="Browser">
+<msg time="2026-09-29T13:56:40.548760" level="INFO">Clicks the element 'css=[data-testid="login-submit"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.548760" elapsed="0.069173"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:40.548760" elapsed="0.069173"/>
+</kw>
+<doc>กรอกฟอร์ม + กดเข้าสู่ระบบ (ไม่ตรวจผลลัพธ์)</doc>
+<status status="PASS" start="2026-09-29T13:56:40.499599" elapsed="0.118334"/>
+</kw>
+<kw name="Dashboard Should Be Loaded" owner="dashboard_page">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:41.043963" level="INFO">Waited for Element with selector css=[data-testid="dashboard-page"] at state visible</msg>
+<arg>${DASHBOARD}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:40.619055" elapsed="0.425927"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2026-09-29T13:56:41.058306" level="INFO">Waited for Element with selector css=[data-testid="stat-total-value"] at state visible</msg>
+<arg>${STAT_TOTAL}</arg>
+<arg>visible</arg>
+<arg>timeout=20s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.045496" elapsed="0.013807"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Stat Should Have Number" owner="dashboard_page">
+<kw name="Get Text" owner="Browser">
+<msg time="2026-09-29T13:56:41.072622" level="INFO">Text: ['6,653']</msg>
+<msg time="2026-09-29T13:56:41.072622" level="INFO">${text} = 6,653</msg>
+<var>${text}</var>
+<arg>${locator}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.060488" elapsed="0.012134"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2026-09-29T13:56:41.073788" level="INFO">Length is 5.</msg>
+<arg>${text}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.072622" elapsed="0.001166"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2026-09-29T13:56:41.073788" level="INFO">${clean} = 6653</msg>
+<var>${clean}</var>
+<arg>${text}</arg>
+<arg>,</arg>
+<arg>${EMPTY}</arg>
+<doc>Replaces `search_for` in the given `string` with `replace_with`.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.073788" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-09-29T13:56:41.074788" level="INFO">${number} = 6653</msg>
+<var>${number}</var>
+<arg>${clean}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.073788" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${number} &gt;= 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.074788" elapsed="0.000000"/>
+</kw>
+<arg>${STAT_TOTAL}</arg>
+<doc>ตัวเลขบนการ์ดมี comma คั่นหลักพัน — ตัดออกก่อนแปลงเป็น int
+ถ้ายังเป็น skeleton จะแปลงไม่ผ่านแล้ว retry ต่อ</doc>
+<status status="PASS" start="2026-09-29T13:56:41.059303" elapsed="0.015485"/>
+</kw>
+<arg>10x</arg>
+<arg>1s</arg>
+<arg>Stat Should Have Number</arg>
+<arg>${STAT_TOTAL}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.059303" elapsed="0.015485"/>
+</kw>
+<doc>รอจนการ์ดสรุปมีตัวเลขจริง (ไม่ใช่ skeleton)</doc>
+<status status="PASS" start="2026-09-29T13:56:40.617933" elapsed="0.456855"/>
+</kw>
+<kw name="Capture Page" owner="common">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-09-29T13:56:41.250118" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/10-dashboard-mobile.png" target="_blank"&gt;&lt;img src="browser/screenshot/10-dashboard-mobile.png" style="max-width:800px;max-height:800px;"/&gt;&lt;/a&gt;</msg>
+<arg>filename=${name}</arg>
+<arg>fullPage=True</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.075788" elapsed="0.175790"/>
+</kw>
+<arg>10-dashboard-mobile</arg>
+<doc>ถ่ายภาพทั้งหน้า เก็บที่ results/browser/screenshot/&lt;name&gt;.png และแนบใน log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:41.075788" elapsed="0.175790"/>
+</kw>
+<kw name="Set Viewport Size" owner="Browser" type="TEARDOWN">
+<msg time="2026-09-29T13:56:41.266775" level="INFO">Set viewport size to: {"width":1440,"height":900}</msg>
+<arg>1440</arg>
+<arg>900</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Sets the current page's viewport size to the specified dimensions.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.251578" elapsed="0.015197"/>
+</kw>
+<doc>จอเล็ก (390x844) — ภาพประกอบถูกซ่อน เหลือเฉพาะฟอร์ม และยังล็อกอินได้</doc>
+<tag>auth</tag>
+<tag>responsive</tag>
+<tag>ui</tag>
+<status status="PASS" start="2026-09-29T13:56:39.194309" elapsed="2.072466"/>
+</test>
+<kw name="Close App" owner="common" type="TEARDOWN">
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-09-29T13:56:41.487214" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-09-29T13:56:41.413493" elapsed="0.075025"/>
+</kw>
+<status status="PASS" start="2026-09-29T13:56:41.413493" elapsed="0.075025"/>
+</kw>
+<doc>ทดสอบหน้าเข้าสู่ระบบ — ต้องมี FE (:5173) และ BE (:3001) รันอยู่
+ทุก test case เก็บ screenshot ไว้ดูใน results/log.html</doc>
+<status status="PASS" start="2026-09-29T13:56:25.142176" elapsed="16.346342"/>
+</suite>
+<status status="PASS" start="2026-09-29T13:56:25.077119" elapsed="16.425757"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="8" fail="0" skip="0">auth</stat>
+<stat pass="1" fail="0" skip="0">responsive</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
+<stat pass="8" fail="0" skip="0">ui</stat>
+</tag>
+<suite>
+<stat name="Auth" id="s1" pass="8" fail="0" skip="0">Auth</stat>
+<stat name="Login" id="s1-s1" pass="8" fail="0" skip="0">Auth.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

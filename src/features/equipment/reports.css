@@ -1,0 +1,441 @@
+/* ══ Product Report (/reports) — Figma 146-11856 ════════════════ */
+.rp-page .page-head__title {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.rp-page .page-head__text {
+  gap: 6px;
+}
+
+.rp-page .page-head__subtitle {
+  max-width: none;
+  color: var(--slate);
+}
+
+.rp-page .page-head__actions {
+  gap: 12px;
+  align-self: center;
+}
+
+/* ช่วงวันที่ — pill ขาวขอบเทา */
+.rp-range.ant-picker {
+  height: 36px;
+  width: 260px;
+  padding: 0 16px;
+  border-color: var(--border);
+  border-radius: 99px;
+  background: var(--surface);
+}
+
+.rp-range .ant-picker-prefix {
+  margin-inline-end: 8px;
+  color: var(--slate);
+}
+
+.rp-range .ant-picker-input > input {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--navy);
+  text-align: center;
+  cursor: pointer;
+}
+
+.rp-range .ant-picker-range-separator {
+  padding: 0 2px;
+  color: var(--navy);
+}
+
+.rp-range .ant-picker-suffix {
+  font-size: 11px;
+  color: var(--slate);
+}
+
+.rp-export.ant-btn {
+  width: 248px;
+  height: 44px;
+  border-radius: 99px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* ── KPI ── */
+.rp-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.rp-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.rp-kpi__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  color: var(--slate);
+}
+
+.rp-kpi__icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-style: normal;
+}
+
+.rp-kpi__icon.is-green {
+  background: #f0fdf4;
+  color: #22c55e;
+}
+
+.rp-kpi__icon.is-red {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.rp-kpi__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rp-kpi__body > strong {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rp-kpi__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--slate);
+}
+
+.rp-kpi__foot b {
+  font-weight: 600;
+}
+
+.rp-kpi__foot .is-up {
+  color: #22c55e;
+}
+
+.rp-kpi__foot .is-down {
+  color: #ef4444;
+}
+
+/* ── การ์ดกราฟ/ตาราง ── */
+.rp-charts {
+  display: grid;
+  grid-template-columns: minmax(0, 704fr) minmax(0, 400fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.rp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.rp-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.rp-card__head h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rp-card__head p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--slate);
+}
+
+.rp-legend-inline {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--slate);
+}
+
+.rp-legend-inline span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rp-legend-inline i,
+.rp-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.rp-donut {
+  min-height: 286px;
+}
+
+.rp-donut__body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 180px;
+}
+
+.rp-donut__chart {
+  position: relative;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  margin-left: 10px;
+}
+
+.rp-donut__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.rp-donut__center small {
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--slate);
+}
+
+.rp-donut__center strong {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rp-legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.rp-legend li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--navy);
+}
+
+.rp-legend li span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rp-legend i {
+  width: 10px;
+  height: 10px;
+}
+
+.rp-legend b {
+  font-weight: 600;
+}
+
+/* ── ตาราง Recent Items ── */
+.rp-table-card {
+  gap: 16px;
+}
+
+.rp-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rp-search {
+  width: 220px;
+}
+
+.rp-search .ant-input-affix-wrapper,
+.rp-search .ant-btn {
+  height: 36px;
+}
+
+.rp-search .ant-input-affix-wrapper {
+  padding-block: 0;
+}
+
+.rp-search .ant-input {
+  height: 34px;
+}
+
+.rp-code {
+  white-space: nowrap;
+}
+
+.rp-select.ant-select {
+  width: 160px;
+  height: 36px;
+}
+
+.rp-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--slate);
+  cursor: pointer;
+}
+
+.rp-filter .anticon {
+  font-size: 16px;
+}
+
+.rp-filter:hover,
+.rp-filter.is-active {
+  color: var(--primary);
+}
+
+.rp-add.ant-btn {
+  height: 36px;
+  border-radius: 99px;
+  border-color: var(--border);
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.rp-table .ant-table-thead > tr > th {
+  padding: 12px 16px;
+  background: #f5f5f5 !important;
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.rp-table .ant-table-thead > tr > th:first-child {
+  border-start-start-radius: 8px !important;
+  border-end-start-radius: 8px;
+}
+
+.rp-table .ant-table-thead > tr > th:last-child {
+  border-start-end-radius: 8px !important;
+  border-end-end-radius: 8px;
+}
+
+.rp-table .ant-table-tbody > tr > td {
+  height: 51px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--navy);
+}
+
+.rp-table .ant-table-tbody > tr:first-child > td {
+  border-top: 0;
+}
+
+.rp-code {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rp-name {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.rp-date {
+  color: var(--slate);
+}
+
+.rp-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .rp-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rp-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .rp-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .rp-range.ant-picker,
+  .rp-export.ant-btn,
+  .rp-search {
+    width: 100%;
+  }
+
+  .rp-donut__body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rp-donut__chart {
+    margin: 0 auto;
+  }
+}
