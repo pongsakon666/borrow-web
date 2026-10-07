@@ -32,6 +32,6 @@ coverage
 src/shared/api/schema.d.ts
 
 # robot
-tests/robot/results
+tests/robot/results*
 tests/robot/.venv
 __pycache__
